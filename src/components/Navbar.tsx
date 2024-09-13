@@ -18,10 +18,10 @@ export default function Navbar() {
           width={100}
         />
         <div className={"flex justify-center items-center gap-x-3"}>
-          <Link href="/" className={"hover:bg-secondary"}>
+          <Link href="/" className={"hover:text-primary"}>
             Operadores
           </Link>
-          <Link href="/clientes" className={"hover:bg-secondary"}>
+          <Link href="/clientes" className={"hover:text-primary"}>
             Clientes
           </Link>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 import { ClientssTableRow } from "@/details/clients/table/RowTable";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Table,
   TableBody,
@@ -16,8 +16,7 @@ import {
 import { ClientsTableRow, columns } from "@/details/clients/table/config";
 import { ClientTableHeader } from "@/details/clients/table/HeadTable";
 import axios, { AxiosResponse } from "axios";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Operator } from "@/details/Operators";
+import { useQuery } from "@tanstack/react-query";
 
 export interface Client {
   name: string;
@@ -47,7 +46,6 @@ export default function ClientsTable() {
       return fetchData();
     },
   });
-  //const queryClient = useQueryClient();
 
   const table = useReactTable<ClientsTableRow>({
     data: [...(clientList ?? [])],

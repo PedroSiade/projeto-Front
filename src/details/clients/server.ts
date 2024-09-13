@@ -9,11 +9,6 @@ const rowSchema = z.object({
   nascimento: z.coerce.date(),
 });
 
-export async function countOperators() {
-  const count = await prisma.operator.count();
-  return count;
-}
-
 export async function handleData(results: Record<string, unknown>[]) {
   const operators = await prisma.operator.findMany();
   for (const result of results) {
@@ -23,7 +18,7 @@ export async function handleData(results: Record<string, unknown>[]) {
     try {
       const data = rowSchema.parse(result);
       const operator = operators.at(index % operators.length);
-      const created = await prisma.client.create({
+      await prisma.client.create({
         data: {
           name: data.nome,
           email: data.email,

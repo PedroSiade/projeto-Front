@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Provider } from "@radix-ui/react-direction";
+import Providers from "@/app/providers";
+import Navbar from "@/components/Navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +31,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Providers>
+          <div className={"min-h-screen   bg-slate-50"}>
+            <Navbar />
+            <div className={"flex justify-center mt-10"}>
+              <div className={"container"}>{children}</div>
+            </div>
+          </div>
+        </Providers>
       </body>
     </html>
   );
